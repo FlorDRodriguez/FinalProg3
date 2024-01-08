@@ -1,0 +1,1 @@
+{"version":3,"file":"aws_service_workflow.d.ts","sourceRoot":"","sources":["../../../../src/cmap/auth/mongodb_oidc/aws_service_workflow.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,eAAe,EAAE,MAAM,oBAAoB,CAAC;AAKrD;;;;GAIG;AACH,qBAAa,kBAAmB,SAAQ,eAAe;;IAKrD;;OAEG;IACG,QAAQ,IAAI,OAAO,CAAC,MAAM,CAAC;CAOlC"}

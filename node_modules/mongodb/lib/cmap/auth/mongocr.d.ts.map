@@ -1,0 +1,1 @@
+{"version":3,"file":"mongocr.d.ts","sourceRoot":"","sources":["../../../src/cmap/auth/mongocr.ts"],"names":[],"mappings":"AAIA,OAAO,EAAE,KAAK,WAAW,EAAE,YAAY,EAAE,MAAM,iBAAiB,CAAC;AAEjE,qBAAa,OAAQ,SAAQ,YAAY;IACxB,IAAI,CAAC,WAAW,EAAE,WAAW,GAAG,OAAO,CAAC,IAAI,CAAC;CAkC7D"}
