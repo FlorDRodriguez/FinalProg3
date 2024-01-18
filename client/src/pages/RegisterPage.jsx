@@ -14,7 +14,7 @@ function RegisterPage() {
 
     useEffect(() => {
         if(isAuthenticated) navigate("/tasks");
-    }, [isAuthenticated])
+    }, [isAuthenticated]);
 
     const onSubmit = async (value) => {
         await signup(value);
