@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
-import { createTaskRequest, getTasksRequest } from "../api/tasks.js";
+import { createTaskRequest, getTasksRequest, deleteTaskRequest, 
+  getTaskRequest, updateTaskRequest } from "../api/tasks.js";
 
 const TaskContext = createContext();
 
@@ -47,8 +48,40 @@ export function TaskProvider({ children }) {
     }
   };
 
+  const deleteTask = async (id) => {
+    try {
+      const res = await deleteTaskRequest(id);
+      if (res.status === 204) setTasks(tasks.filter(task => task._id !== id));
+      // Si responde 204, de las tareas filtrá cada una de las tareas
+      // Si por cada tarea su id es distinto al id que acaba de recibir entonces conservalo
+      // Esto crea un arreglo nuevo pero sin la tarea que acabo de borrar
+    } catch (error) {
+      console.log(error);
+    }
+    };
+  
+  const getTask = async (id) => {
+    try {
+      const res = await getTaskRequest(id);
+      return res.data; //devuelve la tarea
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const updateTask = async (id, task) => { 
+  //el 1er parametro es el id de la tarea que quiero actualizar, el 2do son los nuevos valores
+    try {
+      await updateTaskRequest(id, task);
+    } catch (error) {
+      console.error(error);
+    }  
+  }
+  
   return (
-    <TaskContext.Provider value={{ tasks, createTask, getTasks }}>{children}</TaskContext.Provider>
+    <TaskContext.Provider value={{ tasks, createTask, getTasks, deleteTask, getTask, updateTask }}>
+      {children}
+    </TaskContext.Provider>
   );
 }
 
