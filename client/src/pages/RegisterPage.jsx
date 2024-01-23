@@ -51,7 +51,10 @@ function RegisterPage() {
                 {errors.password && <p className="text-red-500">La contraseña es obligatoria.</p>}
 
                 
-                <button type="submit"> Registrarme </button>
+                <button 
+                type="submit"
+                className="bg-sky-500 text-white px-4 py-2 rounded-md my-2"> 
+                Registrarme </button>
             </form>
 
             <p className='flex gap-x-2 justify-between'>
