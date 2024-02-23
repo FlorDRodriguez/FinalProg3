@@ -79,17 +79,6 @@ export function ProductProvider({ children }) {
     }  
   }
 
-  // const searchProduct = async (name) => { 
-  //     try {
-  //       const res = await searchProductRequest(name);
-  //       console.log("11111111111111")
-  //       console.log(res);
-  //     } catch (error) {
-  //       console.log("22222222222222");
-  //       console.error(error);
-  //     }  
-  // },
-
   return (
     <ProductContext.Provider value={{ products, createProduct, getProducts, deleteProduct,
      getProduct, updateProduct }}>

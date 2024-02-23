@@ -44,9 +44,10 @@ function RegisterPage() {
                 {errors.email && <p className="text-red-500">El email es obligatorio.</p>}
 
 
-                <input type="text" {...register("password", {required: true})}
+                <input type="password" {...register("password", {required: true})}
                 className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
                 placeholder="Contraseña"/>
+                <input type="checkbox" onclick="myFunction()"/>Mostrar Contraseña
                 {errors.password && <p className="text-red-500">La contraseña es obligatoria.</p>}
 
                 <button 
@@ -64,5 +65,16 @@ function RegisterPage() {
     </div>
   )
 }
+
+{/* <script>
+    function myFunction() {
+    var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text"
+  } else {
+    x.type = "password"
+  }
+}
+</script> */}
 
 export default RegisterPage
