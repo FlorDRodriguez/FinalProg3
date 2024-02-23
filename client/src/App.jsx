@@ -1,20 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { ProtectedRoute } from "./ProtectedRoute.jsx";
-import { TaskProvider } from "./context/TasksContext.jsx";
+import { ProductProvider } from "./context/ProductsContext.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import TasksPage from "./pages/TasksPage.jsx";
-import TaskFormPage from "./pages/TaskFormPage.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
+import ProductFormPage from "./pages/ProductFormPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import Profile from "./pages/Profile.jsx";
 import { Navbar } from "./components/Navbar.jsx";
-
 
 function App () {
   return (
     <AuthProvider>
-      <TaskProvider>
+      <ProductProvider>
         <BrowserRouter>
           <main className="container mx-auto px-10">
             <Navbar/>
@@ -24,15 +22,15 @@ function App () {
               <Route path="/register" element={<RegisterPage/>}/>
               {/* Rutas protegidas */}
               <Route element={<ProtectedRoute />}>
-                <Route path="/tasks" element={<TasksPage/>}/>
-                <Route path="/add-task" element={<TaskFormPage/>}/>
-                <Route path="/tasks/:id" element={<TaskFormPage/>}/>
-                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/products" element={<ProductsPage/>}/>
+                <Route path="/add-product" element={<ProductFormPage/>}/>
+                <Route path="/products/:id" element={<ProductFormPage/>}/>
+                <Route path="/products/:name" element={<ProductsPage/>}/>
               </Route>
             </Routes>
           </main>
         </BrowserRouter>
-      </TaskProvider>
+      </ProductProvider>
     </AuthProvider>
   )
 }

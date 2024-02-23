@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const taskSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -10,9 +10,11 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      default: Date.now,
+    price: {
+      type: Number,
+    },
+    quantity: {
+      type: Number,
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -24,4 +26,4 @@ const taskSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Task", taskSchema);
+export default mongoose.model("Product", productSchema);

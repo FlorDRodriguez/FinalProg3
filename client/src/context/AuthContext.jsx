@@ -50,7 +50,9 @@ export const AuthProvider = ({children}) => {
             setUser(res.data);
 
         } catch (error) {
-            //console.error(error);
+          console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>><")
+
+            console.error(error);
             setErrors(error.response.data.message);
         }
     }

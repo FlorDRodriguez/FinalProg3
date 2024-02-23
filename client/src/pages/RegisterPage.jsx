@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 
-
 function RegisterPage() {
   
     const { signup, isAuthenticated, errors: registerErrors } = useAuth();
@@ -13,7 +12,7 @@ function RegisterPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(isAuthenticated) navigate("/tasks");
+        if(isAuthenticated) navigate("/products");
     }, [isAuthenticated]);
 
     const onSubmit = async (value) => {
@@ -22,7 +21,7 @@ function RegisterPage() {
 
   return (
     <div className='flex h-screen items-center justify-center'>
-        <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
+        <div className='bg-red-200 max-w-md w-full p-10 rounded-md'>
             {
                 registerErrors.map((error, i) => (
                     <div className="bg-red-500 p-2 text-white my-2" key={i}>
@@ -35,26 +34,26 @@ function RegisterPage() {
 
             <form  onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" {...register("username", {required: true})}
-                className="w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
+                className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
                 placeholder="Nombre de Usuario"/>
                 {errors.username && <p className="text-red-500">El nombre de usuario es obligatorio.</p>}
 
                 <input type="text" {...register("email", {required: true})}
-                className="w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
+                className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
                 placeholder="Email"/>
                 {errors.email && <p className="text-red-500">El email es obligatorio.</p>}
 
 
                 <input type="text" {...register("password", {required: true})}
-                className="w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
+                className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
                 placeholder="Contraseña"/>
                 {errors.password && <p className="text-red-500">La contraseña es obligatoria.</p>}
 
-                
                 <button 
                 type="submit"
                 className="bg-sky-500 text-white px-4 py-2 rounded-md my-2"> 
-                Registrarme </button>
+                    Registrarse 
+                </button>
             </form>
 
             <p className='flex gap-x-2 justify-between'>

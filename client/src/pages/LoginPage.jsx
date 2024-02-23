@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 
-
 function LoginPage() {
 
   const { register, handleSubmit, formState: {errors} } = useForm();
@@ -13,7 +12,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isAuthenticated) navigate("/tasks");
+    if(isAuthenticated) navigate("/products");
   }, [isAuthenticated]);
 
   const onSubmit = handleSubmit(data => {
@@ -22,7 +21,7 @@ function LoginPage() {
 
   return (
     <div className='flex h-screen items-center justify-center'>
-      <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
+      <div className='bg-red-200 max-w-md w-full p-10 rounded-md'>
         
         { 
           signinErrors.map((error, i) => (
@@ -36,13 +35,13 @@ function LoginPage() {
 
         <form  onSubmit={handleSubmit(onSubmit)}>
           <input type="text" {...register("email", {required: true})}
-          className="w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
+          className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
           placeholder="Email"/>
           {errors.email && <p className="text-red-500">El email es obligatorio.</p>}
 
 
           <input type="text" {...register("password", {required: true})}
-          className="w-full bg-zinc-700 text-white px-4 py-2 my-2 rounded-md"
+          className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
           placeholder="Contraseña"/>
           {errors.password && <p className="text-red-500">La contraseña es obligatoria.</p>}
 
