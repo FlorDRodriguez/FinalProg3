@@ -43,16 +43,13 @@ export const AuthProvider = ({children}) => {
     }
 
     const signin = async (user) => {
+      
         try {
             const res = await loginRequest(user);
-            console.log(res);
             setIsAuthenticated(true);
             setUser(res.data);
-
         } catch (error) {
-          console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>><")
-
-            console.error(error);
+            console.log("no esta registrado")
             setErrors(error.response.data.message);
         }
     }

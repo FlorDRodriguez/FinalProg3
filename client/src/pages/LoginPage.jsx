@@ -23,18 +23,24 @@ function LoginPage() {
     <div className='flex h-screen items-center justify-center'>
       <div className='bg-red-200 max-w-md w-full p-10 rounded-md'>
         
-        { 
+        {/* { 
           signinErrors.map((error, i) => (
             <div className="bg-red-500 p-2 text-white my-2" key={i}>
               {error}
             </div>
           ))
-        }
+        } */}
+
+        {Array.isArray(signinErrors) && signinErrors.map((error, i) => (
+          <div className="bg-red-500 p-2 text-white my-2" key={i}>
+            <Message message={error}/>
+          </div>
+        ))}
 
         <h1 className='text-2xl font-bold text-center'> Inicio de Sesión </h1>
 
         <form  onSubmit={handleSubmit(onSubmit)}>
-          <input type="password" {...register("email", {required: true, password: true})}
+          <input type="text" {...register("email", {required: true, password: true})}
           className="w-full bg-red-100 text-black px-4 py-2 my-2 rounded-md"
           placeholder="Email"/>
           {errors.email && <p className="text-red-500">El email es obligatorio.</p>}

@@ -11,14 +11,14 @@ export const updateProductRequest = (id, product) =>
 
 export const deleteProductRequest = (id) => axios.delete(`/products/${id}`);
 
-export const searchProductRequest = (name) => axios.get(`/products?name=${name}`);
+export const searchProductRequest = (name) => axios.get(`/search?name=${name}`);
 
 // export const searchProductRequest = (name) => {
 //   try {
 //     axios.get(`/products?name=${name}`);
-//     // console.log(res.data)
-//   } catch (error) {
 //     console.log(">>>searchProductRequest");
+//   } catch (error) {
+//     console.log(">>> error en searchProductRequest");
 //     console.error(error)
 //   }
-// };,
+// };

@@ -12,7 +12,5 @@ router.post("/products", authRequired, validateSchema(createProductSchema), crea
 router.get("/products/:id", authRequired, getProduct);
 router.put("/products/:id", authRequired, updateProduct);
 router.delete("/products/:id", authRequired, deleteProduct);
-router.get("/products", authRequired, searchProduct);
-
-
+router.get("/search", authRequired, searchProduct);
 export default router;

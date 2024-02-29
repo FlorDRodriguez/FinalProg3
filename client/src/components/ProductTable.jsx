@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import eliminar from '../img/eliminar.png';
 import editar from '../img/editar.png';
 
+import React, { useState } from 'react';
+
 
 
 function ProductTable({product}) {
@@ -18,7 +20,6 @@ function ProductTable({product}) {
             <td>${product.price}</td>
             <td>{product.quantity}</td>
             <td>    
-              {/* <div className="flex gap-x-2 items-center"> */}
                 <button
                 onClick={() => {
                   deleteProduct(product._id);
@@ -33,7 +34,6 @@ function ProductTable({product}) {
             </td>
           </tr>
         </tbody>
-                    {/* </div> */}
     </>
   );
 }

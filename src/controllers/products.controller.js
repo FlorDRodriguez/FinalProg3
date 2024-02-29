@@ -64,16 +64,29 @@ export const getProduct = async (req, res) => {
 
 export const searchProduct = async (req, res) => {
   try {
-    const { name } = req.body;
+    // const { name } = req.body
+    const name = req.query.name;
+    const userId = req.user.id;
     // Obtiene el término de búsqueda de la consulta de la URL. 
     //req.query.name para obtener el valor del parámetro de consulta name de la URL de la solicitud.
-    // const name = req.query.name;
-    // Realiza la búsqueda de productos por nombre
-    const productSearch = await Product.find({ name: { $regex: name, $options: 'i' } }).populate('user');
+    const escapedProductSearch = name.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    const regex = new RegExp(`^${escapedProductSearch}`, "i");
+    
+    const productSearch = await Product.find({ 
+      name: { $regex: regex },
+      user: userId 
+    }).populate('user');
+
+    // const productSearch = await Product.find({ 
+    //   name: { $regex: name, $options: 'i' },
+    //   user: userId 
+    // }).populate('user');
+
     //$regex para realizar una búsqueda por coincidencia parcial del nombre 
     //$options: 'i' para que la búsqueda sea insensible a mayúsculas y minúsculas.
-    return res.json(productSearch);
+    return res.json(productSearch);  
   } catch (error) {
+    console.log(">>>>>>>>>>>>>>>>ERROR EN CONTROLLER")
     return res.status(500).json({ message: error.message });
   }
 };

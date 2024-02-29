@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { searchProductRequest } from "../api/products.js";
+import HeaderTable from './HeaderTable.jsx';
+import ProductTable from './ProductTable.jsx';
 
-const SearchProduct = () => {
+const SearchProduct = ( {products} ) => {
     const [searchName, setSearchName] = useState("");
     const [searchResults, setSearchResults] = useState([]);
-  
-    const handleSearch = async () => { //esta funcion trae TODOS los productos
+
+    const handleSearch = async () => { 
         try {
             if (searchName) {
                 //solicitud de búsqueda, pasando el término de búsqueda(searchName) como parámetro
@@ -13,7 +15,7 @@ const SearchProduct = () => {
                 //Actualiza el estado searchResults con los datos de los productos devueltos
                 //Es decir, ctualiza la interfaz de usuario con los resultados de búsqueda obtenidos.
                 setSearchResults(res.data);
-                console.log(res.data); // Mostrar los datos de la respuesta en la consola
+                console.log(res); 
             }
         } catch (error) {
             console.error('>>>>Error al buscar productos');
@@ -22,28 +24,24 @@ const SearchProduct = () => {
     };
   
     return (
-      <div>
+      <div className="divSearch bg-red-200 p-10 rounded-md">
         <input
+          className='search'
           type="text"
-          placeholder="Buscar producto"
+          placeholder="Buscar producto..."
           value={searchName} //el valor ingresado será actualizado según el estado searchName
           onChange={(e) => {
-            // console.log('Nuevo valor de búsqueda:', e.target.value);
+            console.log('Nuevo valor de búsqueda:', e.target.value);
             setSearchName(e.target.value);
           }}
           //onChange es un evento que se dispara cada vez que el valor del campo de entrada cambia, 
           //y actualiza el estado searchName con el nuevo valor ingresado
         />
-        <button onClick={handleSearch}>Buscar</button>
-        {/*cuando los usuarios hagan clic en el botón, se ejecutará la función handleSearch*/}
-        <ul>
-          {searchResults && searchResults.map((product) => (
-            <li key={product.name}>{product.name}</li>
-            //searchResults.map itera sobre la matriz de searchResults (los resultados de búsqueda) 
-            //El atributo key={product.id} se utiliza para identificar de manera única 
-            //cada elemento de la lista
-          ))}
-        </ul>
+        <button className='button' onClick={handleSearch}>Buscar</button>
+
+        {searchResults && searchResults.map((product) => (
+          <ProductTable product={product} key={product._id}/>
+        ))}
       </div>
     );
   };
